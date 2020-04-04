@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=raddit-user
-WorkingDirectory=/home/raddit-user/raddit
+User=vagrant
+WorkingDirectory=/home/vagrant/raddit
 ExecStart=/bin/bash -lc 'puma'
 Restart=always
 
