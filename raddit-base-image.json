@@ -1,22 +1,22 @@
 {
-  "builders": [
+  "builders": [ # Наш "рабочий". На каких мощностях, и где мы будем собирать image.
     {
       "type": "googlecompute",
-      "project_id": "infrastructure-as-code",
-      "zone": "europe-west1-b",
-      "machine_type": "g1-small",
-      "source_image_family": "ubuntu-1604-lts",
-      "image_name": "raddit-base-{{isotime `20060102-150405`}}",
-      "image_family": "raddit-base",
-      "image_description": "Ubuntu 16.04 with Ruby, Bundler and MongoDB preinstalled",
-      "ssh_username": "raddit-user"
+      "project_id": "infrastructure-as-code", # Здесь нужно заменить project_id на свой
+      "zone": "europe-west1-b", # Зона, в которой будем собирать image
+      "machine_type": "g1-small", # Тип машины, которая будет использоваться в сборке
+      "source_image_family": "ubuntu-1604-lts", # На базе какого образа будем делать image
+      "image_name": "raddit-base-{{isotime `20060102-150405`}}", # Название будущего image
+      "image_family": "raddit-base", # Это поколение нашего image. Например есть поколение debian10, в котором есть много разных версий. Тобишь версий image может быть много, но их объединяет одно поколение.
+      "image_description": "Ubuntu 16.04 with Ruby, Bundler and MongoDB preinstalled", # Описание image
+      "ssh_username": "raddit-user" # пользователь, которого создаст packer
     }
   ],
-  "provisioners": [
+  "provisioners": [ # А тут уже что именно делаем с нашим будущим image.
       {
-          "type": "shell",
-          "script": "./configuration.sh",
-          "execute_command": "sudo {{.Path}}"
+          "type": "shell", # Используем shell
+          "script": "./configuration.sh", # Запускаем скрипт который берём по этому локальному пути 
+          "execute_command": "sudo {{.Path}}" # Запускаем его используя sudo
       }
   ]
 }
