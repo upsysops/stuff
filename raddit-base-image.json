@@ -9,7 +9,7 @@
       "image_name": "raddit-base-{{isotime `20060102-150405`}}",
       "image_family": "raddit-base",
       "image_description": "Debian 10 with Ruby, Bundler and MongoDB preinstalled",
-      "ssh_username": "raddit-user"
+      "ssh_username": "vagrant"
     }
   ],
   "provisioners": [
